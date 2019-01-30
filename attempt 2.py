@@ -1,20 +1,4 @@
 import time
-def find_in_dict(buffer, dictionary):
-    shift = len(dictionary)
-    substring = ""
-
-    for character in buffer:
-        substring_tmp = substring + character
-        shift_tmp = dictionary.rfind(substring_tmp)
-
-        if shift_tmp < 0:
-            break
-
-        substring = substring_tmp
-        shift = shift_tmp
-
-    return len(substring), len(dictionary) - shift
-# Input inp
 #inp = "Peter Piper picked a peck of pickled peppers.A peck of pickled peppers Peter Piper picked.If Peter Piper picked a peck of pickled peppers,Where's the peck of pickled peppers Peter Piper picked"
 inp="ABRACADABRA"
 # Get time
@@ -29,12 +13,8 @@ while position < len(inp) :
     #count = -1
     found = False
     for i in range(position, len(inp)):
-
         count = inp.rfind(inp[position:position + look_ahead_buffer + 1], 0, position)
-        count1,count2 = find_in_dict(inp[position:position + look_ahead_buffer + 1],inp)
         print(count)
-        print(count1)
-        print(count2)
         if count == -1:
             break
         if count >= 0:
