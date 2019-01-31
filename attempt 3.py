@@ -46,23 +46,30 @@ def encode(inp,lookahead_buffer_size,window_size):
     aleady_found=[]
     while position < len(inp):
         d,l=myFunct(inp,position,inp,lookahead_buffer_size,window_size)
-        if d == -1 and l== -1 and inp[position] not in aleady_found:
+        if d == -1 and l== -1:
             aleady_found.append(inp[position])
-            #print("( 0 , 0 ,",inp[position],")")
+            print("( 0 , 0 ,",inp[position],")")
             string_encoded.append([0,0,inp[position]])
             position=position+1
+            lookahead_buffer_size=lookahead_buffer_size+1
+            window_size=window_size
         else:
             if (position +l == len(inp)):
                 next_letter="-"
             else:
                 next_letter=inp[position+l]            
-            #print("(",d,",",l,",",next_letter,")")
+            print("(",d,",",l,",",next_letter,")")
             string_encoded.append([d,l,next_letter])
             position=position+l+1
+            lookahead_buffer_size=lookahead_buffer_size+1
+            window_size=window_size
     return string_encoded
 
 inp="ABRACADABRA"
 lookahead_buffer_size=150
 window_size=150
+
 enc = encode(inp,lookahead_buffer_size,window_size)
 print(enc)
+
+#print(myFunct("ABRACADABRA", 0,inp,3 , 3))
