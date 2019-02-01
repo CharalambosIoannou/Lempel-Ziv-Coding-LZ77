@@ -1,18 +1,43 @@
-def myFunct(data, current_position,inp,lookahead_buffer_size , window_size):
-    letters_found=[]
-    if (current_position + lookahead_buffer_size < len(data) +1):
+import time
+import math
+import bitarray
+
+def get_binary(string_encoded,lookahead_buffer_size , window_size):
+    full_string=""
+    #full=[]
+    d_bits=math.ceil(math.log(window_size,2))
+    l_bits=math.ceil(math.log(lookahead_buffer_size,2))
+    char_bits=8
+    total_bits_needed= d_bits+l_bits+char_bits
+    d=""
+    l=""
+    next_lett=""
+    #print(total_bits_needed)
+    for i in string_encoded:
+        d="{0:b}".format(i[0]).zfill(d_bits)
+        l="{0:b}".format(i[1]).zfill(l_bits)
+        next_lett="{0:b}".format(i[2]).zfill(char_bits)
+        full_string=full_string+d+l+next_lett
+        #full.append(d+l+next_lett)
+    #print(full_string)
+    #print("ls: " , ''.join(full))
+    return full_string
+        
+
+def myFunct(inp, current_position,lookahead_buffer_size , window_size):
+    positions_found=[]
+    if (current_position + lookahead_buffer_size < len(inp) +1):
         look_ahead_buffer=current_position + lookahead_buffer_size
     else:
-        look_ahead_buffer=len(data)+1
-    
+        look_ahead_buffer=len(inp)+1  
 
     for i in range(current_position+1 , look_ahead_buffer):
-        if (i>len(data)):
+        if (i>len(inp)):
             break
         else:
             #print(current_position)
             #print(i)
-            string_to_check=data[current_position:i]
+            string_to_check=inp[current_position:i]
             #print("str: " , string_to_check)
             if (current_position - window_size > 0):
                 start_index=current_position - window_size
@@ -25,12 +50,12 @@ def myFunct(data, current_position,inp,lookahead_buffer_size , window_size):
                 #print(len(string_to_check))
                 d=len(inp[start_index:current_position]) - find_char
                 l=len(string_to_check)
-                letters_found.append([d,l])
+                positions_found.append([d,l])
                 
-    #print("matched: " , ''.join(letters_found))
-    if (len(letters_found) != 0 ):
-        d=letters_found[-1][0]
-        l=letters_found[-1][1]
+    #print("matched: " ,(positions_found))
+    if (len(positions_found) != 0 ):
+        d=positions_found[-1][0]
+        l=positions_found[-1][1]
         #print(d)
         #print(l)
         return d,l
@@ -38,14 +63,25 @@ def myFunct(data, current_position,inp,lookahead_buffer_size , window_size):
         return -1,-1
 
 
-def encode(inp,lookahead_buffer_size,window_size):
+def encode(file_name,lookahead_buffer_size,window_size):    
+    try:
+        input_file = open(file_name, 'rb')
+        inp = input_file.read()
+        inp_to_binary=bitarray.bitarray(endian='big')
+        inp_to_binary.frombytes(inp)
+        #print(inp_to_binary)
+    except IOError:
+        print('Could not open file')
+    length_original=len(inp_to_binary)
+    print("Original length: " , length_original)
     string_encoded=[]
     position = 0
     #inp = "Peter Piper picked a peck of pickled peppers;A peck of pickled peppers Peter Piper picked;If Peter Piper picked a peck of pickled peppers,Where's the peck of pickled peppers Peter Piper picked"
     #inp="Peter Piper picked a peck of pickled peppers;A peck of pickled peppers Peter Piper picked;If Peter Piper picked a peck of pickled peppers,Where's the peck of pickled peppers Peter Piper picked?"
     aleady_found=[]
     while position < len(inp):
-        d,l=myFunct(inp,position,inp,lookahead_buffer_size,window_size)
+    
+        d,l=myFunct(inp,position,lookahead_buffer_size,window_size)
         if d == -1 and l== -1:
             aleady_found.append(inp[position])
             #print("( 0 , 0 ,",inp[position],")")
@@ -53,16 +89,23 @@ def encode(inp,lookahead_buffer_size,window_size):
             position=position+1
         else:
             if (position +l == len(inp)):
-                next_letter="-"
+                next_letter=32
             else:
                 next_letter=inp[position+l]            
             #print("(",d,",",l,",",next_letter,")")
             string_encoded.append([d,l,next_letter])
             position=position+l+1
-    return string_encoded
+    final_string=get_binary(string_encoded,lookahead_buffer_size, window_size)
+    print("Compressed Length: ", len(final_string))
+    print("Compression Ratio " , length_original/len(final_string))
+    return final_string
 
-inp="ABRACADABRA"
-lookahead_buffer_size=15
-window_size=15
-enc = encode(inp,lookahead_buffer_size,window_size)
-print(enc)
+
+lookahead_buffer_size=255
+window_size=65535
+
+start = time.time()
+final = encode("easy_lecture_example.txt", lookahead_buffer_size, window_size)
+#print(final)
+finish = time.time()
+print("Time taken: " ,finish-start)
