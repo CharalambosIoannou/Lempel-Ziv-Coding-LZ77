@@ -55,6 +55,7 @@ def encode(file_name,lookahead_buffer_size,window_size):
     try:
         input_file = open(file_name, 'rb')
         inp = input_file.read()
+        print(inp)
         inp_to_binary=bitarray.bitarray(endian='big')
         inp_to_binary.frombytes(inp)
     except IOError:
@@ -86,11 +87,57 @@ def encode(file_name,lookahead_buffer_size,window_size):
     return final_string
 
 
+
+def get_tuples(inp,lookahead_buffer_size , window_size):
+    string_decode=[]
+    d_bits=math.ceil(math.log(window_size,2))
+    l_bits=math.ceil(math.log(lookahead_buffer_size,2))
+    char_bits=8
+    total_bits_needed= d_bits+l_bits+char_bits
+    n=total_bits_needed
+    for i in range (0, len(inp), n):
+        tuples=inp[i:i+n]
+        get_d_binary=tuples[0:d_bits]
+        get_l_binary=tuples[d_bits:l_bits+d_bits]
+        get_letter_binary=tuples[-8:]
+        d_denary=int(get_d_binary,2)
+        l_denary=int(get_l_binary,2)
+        letter_denary=int(get_letter_binary,2)
+        string_decode.append([d_denary,l_denary,letter_denary])
+    #print(string_decode)
+    return string_decode
+
+
+def decompress(string_decode,lookahead_buffer_size , window_size):
+    string=""
+    for tuples in string_decode:
+        #print(tuples)
+        if (tuples[0] == 0):
+            string=string+chr(tuples[2])
+        else:
+            let=string[-tuples[0] : - (tuples[0]-tuples[1]) ]
+            string=string+let+chr(tuples[2])
+    return string
+
+
+
 lookahead_buffer_size=255
 window_size=65535
 
+print("##### Encode #####")
+print()
 start = time.time()
-final = encode("easy_lecture_example.txt", lookahead_buffer_size, window_size)
+final = encode("test.txt", lookahead_buffer_size, window_size)
 #print(final)
 finish = time.time()
+print()
 print("Time taken: " ,finish-start)
+
+print("##### Decode #####")
+print()
+start1= time.time()
+to_tuples=get_tuples(final,lookahead_buffer_size , window_size)   
+actual_string=decompress(to_tuples,lookahead_buffer_size , window_size)
+print(actual_string)
+final1=time.time()
+print("Total time: ", final1 - start1)
