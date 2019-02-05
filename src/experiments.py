@@ -7,9 +7,10 @@ window_size=[]
 buffer_size=[]
 ratio=[]
 time_list=[]
+tuples=[]
 for i in range(1, 4000, 1000):
     for j in range(1, 4000, 1000):
-        print("-----------------------------NEW-------------------------")
+        print("__________________________NEW EXPERIMENT__________________________")
         print("Window: " + str(i))
         print("Lookahead: " + str(j))
         start = 0
@@ -19,6 +20,7 @@ for i in range(1, 4000, 1000):
         finish = time.time()
         aferesi=finish-start
         print("Time taken = " + str(aferesi))
+        tuples.append([i,j,aferesi])
         time_list.append(aferesi)
         window_size.append(i)
         buffer_size.append(j)
@@ -33,6 +35,15 @@ print("window max: " , window_size[index_max])
 print("buffer max: " , buffer_size[index_max])
 print("window min: " , window_size[index_min])
 print("buffer min: " , buffer_size[index_min])
+print(tuples)
+
+
+sep = ""
+with open('my.csv', 'w') as csv:
+    for row in tuples:
+        csv.write(sep.join(str(row)))
+        csv.write("\n")
+
 
 """
 print("max ratio: ", max(ratio))

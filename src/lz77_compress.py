@@ -90,17 +90,17 @@ def compress(file_name,lookahead_buffer_size,window_size):
 def get_ratio():
     return ratio
 
-
 """
-lookahead_buffer_size=381272
-window_size=381272
+
+lookahead_buffer_size=1
+window_size=1001
 
 
 print("##### Compress #####")
 print()
 start = time.time()
 
-final = compress("../memetics.txt", lookahead_buffer_size, window_size)
+final = compress("../sample_txt.txt", lookahead_buffer_size, window_size)
 #print(final)
 
 finish = time.time()

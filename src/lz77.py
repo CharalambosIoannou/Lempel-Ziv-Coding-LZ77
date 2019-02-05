@@ -16,6 +16,7 @@ def get_binary(string_encoded,lookahead_buffer_size , window_size):
         l="{0:b}".format(i[1]).zfill(l_bits)
         next_lett="{0:b}".format(i[2]).zfill(char_bits)
         full_string=full_string+d+l+next_lett
+    #print("full: ",full_string)
     return full_string
         
 
@@ -103,7 +104,7 @@ def get_tuples(inp,lookahead_buffer_size , window_size):
         l_denary=int(get_l_binary,2)
         letter_denary=int(get_letter_binary,2)
         string_decode.append([d_denary,l_denary,letter_denary])
-    #print(string_decode)
+    #print("decode: ",string_decode)
     return string_decode
 
 
@@ -140,8 +141,15 @@ print("Time taken: " ,finish-start)
 print("##### Decompress #####")
 print()
 start1= time.time()
-actual_string=decompress(final,lookahead_buffer_size , window_size)
-print(actual_string)
+tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
+
+binary_string=get_binary(tuples_list,lookahead_buffer_size , window_size)
+#print(binary_string)
+if (final == binary_string):
+    print("MATCH")
+else:
+    print("NO MATCH")
 final1=time.time()
 print("Total time: ", final1 - start1)
+
 
