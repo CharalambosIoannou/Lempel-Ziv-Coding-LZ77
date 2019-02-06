@@ -1,6 +1,9 @@
 import time
 import math
 import bitarray
+import sys
+
+
 
 def get_binary(string_encoded,lookahead_buffer_size , window_size):
     full_string=""
@@ -126,30 +129,40 @@ def decompress(inp,lookahead_buffer_size , window_size):
 
 
 
-lookahead_buffer_size=1
-window_size=1001
+time_array=[]
+#window_size=[1,1,501,1001,1001,2001,2001,3001,3001,3001]
+#lookahead_buffer_size=10
+window_size=5
+for i in range (1,30,1):
+    print("Window Size: ",window_size )
+    print("Buffer Size: ",i )
+    print("_______Compress_______")
+    print()
+    start = time.time()
+    final = compress("../tests/ABRACADABRA.txt", i, window_size)
+    #print(final)
+    finish = time.time()
+    print()
+    print("Compress Time taken: " ,finish-start)
+    print("_______Decompress_______")
+    print()
+    start1= time.time()
+    tuples_list=get_tuples(final,i , window_size)
+    binary_string=get_binary(tuples_list,i , window_size)
+    print(decompress(final,i , window_size))
 
-print("##### Compress #####")
-print()
-start = time.time()
-final = compress("../sample_img.jpg", lookahead_buffer_size, window_size)
-#print(final)
-finish = time.time()
-print()
-print("Time taken: " ,finish-start)
+    final1=time.time()
+    decomp_time=final1 - start1
+    print("Decompress Total time: ",decomp_time )
+    time_array.append([window_size,i,decomp_time])
+    sep = ""
 
-print("##### Decompress #####")
-print()
-start1= time.time()
-tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
+    print("- - - - - - - - - - NEW EXPERIMENT- - - - - - - - - -")
 
-binary_string=get_binary(tuples_list,lookahead_buffer_size , window_size)
-#print(binary_string)
-if (final == binary_string):
-    print("MATCH")
-else:
-    print("NO MATCH")
-final1=time.time()
-print("Total time: ", final1 - start1)
+
+with open('decomp.csv', 'w') as csv:
+    for row in time_array:
+        csv.write(sep.join(str(row)))
+        csv.write("\n")
 
 

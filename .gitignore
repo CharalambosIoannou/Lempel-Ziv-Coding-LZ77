@@ -1,2 +1,9 @@
 #Ignore folder
 lempel-ziv-analysis-master/
+.pytest_cache/
+.vscode/
+__pycache__/
+graphs.xlsx
+graphs1.xlsx
+lz77.docx
+lz_modified.docx

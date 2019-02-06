@@ -51,14 +51,20 @@ def longest_match(inp, current_position,lookahead_buffer_size , window_size):
         return -1,-1
 
 
-def compress(file_name,lookahead_buffer_size,window_size):    
+def compress(file_name,lookahead_buffer_size,window_size):
+    global length_original
+    global string_encoded
+    global comp_length
     try:
         input_file = open(file_name, 'rb')
         inp = input_file.read()
+        #print("inp:",inp)
         inp_to_binary=bitarray.bitarray(endian='big')
         inp_to_binary.frombytes(inp)
+        #print("inp bin: ", inp_to_binary)
     except IOError:
         print('Could not open file')
+    #global length_original
     length_original=len(inp_to_binary)
     print("Original length: " , length_original)
     string_encoded=[]
@@ -81,33 +87,42 @@ def compress(file_name,lookahead_buffer_size,window_size):
             position=position+l+1
     #print(string_encoded)
     final_string=get_binary(string_encoded,lookahead_buffer_size, window_size)
-    print("Compressed Length: ", len(final_string))
+    comp_length=len(final_string)
+    print("Compressed Length: ",comp_length )
     global ratio
     ratio = length_original/len(final_string)
     print("Compression Ratio " , ratio )
     return final_string
 
+
+
+
 def get_ratio():
     return ratio
+def get_original_length():
+    return length_original
+def get_compressed_length():
+    return comp_length
+def get_string_encoded():
+    return string_encoded
 
-"""
 
-lookahead_buffer_size=1
-window_size=1001
+
+lookahead_buffer_size=20
+window_size=20
 
 
 print("##### Compress #####")
 print()
 start = time.time()
 
-final = compress("../sample_txt.txt", lookahead_buffer_size, window_size)
-#print(final)
+final = compress("../tests/ABRACADABRA.txt", lookahead_buffer_size, window_size)
+print(final)
 
 finish = time.time()
 print(finish-start)
-
 print("Time taken: " ,finish-start)
 f = open("binary.txt", "w")
 f.write(final) 
-"""
+
 

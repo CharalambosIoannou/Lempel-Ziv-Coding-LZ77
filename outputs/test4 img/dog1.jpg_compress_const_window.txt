@@ -1,0 +1,120 @@
+Window Size:  5000
+Buffer Size:  1
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  0.7822959423065186
+Compressed Length:  766700
+Compression Ratio  0.36363636363636365
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  5000
+Buffer Size:  51
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  2.240206480026245
+Compressed Length:  447633
+Compression Ratio  0.6228316500347383
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  5000
+Buffer Size:  101
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  4.090030908584595
+Compressed Length:  464184
+Compression Ratio  0.6006238905261707
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  5000
+Buffer Size:  151
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  6.839846849441528
+Compressed Length:  480762
+Compression Ratio  0.5799127218873372
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  5000
+Buffer Size:  201
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  10.270107507705688
+Compressed Length:  480762
+Compression Ratio  0.5799127218873372
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  5000
+Buffer Size:  251
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  13.92005443572998
+Compressed Length:  480762
+Compression Ratio  0.5799127218873372
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  5000
+Buffer Size:  301
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  17.460357904434204
+Compressed Length:  497340
+Compression Ratio  0.5605822978244259
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  5000
+Buffer Size:  351
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  21.479645490646362
+Compressed Length:  497340
+Compression Ratio  0.5605822978244259
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  5000
+Buffer Size:  401
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  24.529642820358276
+Compressed Length:  497340
+Compression Ratio  0.5605822978244259
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  5000
+Buffer Size:  451
+__________________________________________Compress__________________________________________
+
+Original length:  278800
+
+Compress Time taken:  27.78014850616455
+Compressed Length:  497340
+Compression Ratio  0.5605822978244259
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -

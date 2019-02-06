@@ -1,0 +1,480 @@
+Window Size:  1
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  6.280916690826416
+Compressed Length:  608328
+Compression Ratio  0.513775463236938
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  101
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.4489638805389404
+Compressed Length:  325726
+Compression Ratio  0.9595304028539324
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  201
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.536600351333618
+Compressed Length:  291168
+Compression Ratio  1.073414660951753
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  301
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.385658025741577
+Compressed Length:  277875
+Compression Ratio  1.1247647323436798
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  401
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.3528218269348145
+Compressed Length:  262475
+Compression Ratio  1.1907572149728545
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  501
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.4515199661254883
+Compressed Length:  251300
+Compression Ratio  1.243708714683645
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  601
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.478794813156128
+Compressed Length:  251914
+Compression Ratio  1.2406773740244688
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  701
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.441378593444824
+Compressed Length:  245102
+Compression Ratio  1.275158913431959
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  801
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.5599687099456787
+Compressed Length:  240214
+Compression Ratio  1.3011065133589217
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  901
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.5856568813323975
+Compressed Length:  235898
+Compression Ratio  1.3249116143417918
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1001
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.5759048461914062
+Compressed Length:  230958
+Compression Ratio  1.3532503745269702
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1101
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.738665819168091
+Compressed Length:  236061
+Compression Ratio  1.323996763548405
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1201
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.748145818710327
+Compressed Length:  232956
+Compression Ratio  1.34164391558921
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1301
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.839284658432007
+Compressed Length:  229797
+Compression Ratio  1.3600873814714727
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1401
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.8702340126037598
+Compressed Length:  226908
+Compression Ratio  1.3774040580323303
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1501
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.8416059017181396
+Compressed Length:  224937
+Compression Ratio  1.3894734970236111
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1601
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  2.953568696975708
+Compressed Length:  223047
+Compression Ratio  1.4012472707545944
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1701
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.0730578899383545
+Compressed Length:  221454
+Compression Ratio  1.4113269572913563
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1801
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.057734251022339
+Compressed Length:  219483
+Compression Ratio  1.4240009476815971
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  1901
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.166626214981079
+Compressed Length:  218106
+Compression Ratio  1.432991297809322
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2001
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.257439136505127
+Compressed Length:  216378
+Compression Ratio  1.444435201360582
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2101
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.245082378387451
+Compressed Length:  223104
+Compression Ratio  1.4008892713711991
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2201
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.282590866088867
+Compressed Length:  221704
+Compression Ratio  1.409735503193447
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2301
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.3947651386260986
+Compressed Length:  220136
+Compression Ratio  1.419776865210597
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2401
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.4594993591308594
+Compressed Length:  218064
+Compression Ratio  1.4332672976740772
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2501
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.491818428039551
+Compressed Length:  216328
+Compression Ratio  1.4447690543988758
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2601
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.5502591133117676
+Compressed Length:  215264
+Compression Ratio  1.4519102125761856
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2701
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.5634355545043945
+Compressed Length:  213976
+Compression Ratio  1.4606497925000934
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2801
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.5476980209350586
+Compressed Length:  212688
+Compression Ratio  1.4694952230497254
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  2901
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.654046058654785
+Compressed Length:  211764
+Compression Ratio  1.4759071419126952
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3001
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.6840217113494873
+Compressed Length:  210924
+Compression Ratio  1.4817849083082058
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3101
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.770508289337158
+Compressed Length:  210056
+Compression Ratio  1.4879079864417109
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3201
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.7489850521087646
+Compressed Length:  209300
+Compression Ratio  1.4932823698041089
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3301
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.970551013946533
+Compressed Length:  208320
+Compression Ratio  1.5003072196620584
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3401
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  4.060865640640259
+Compressed Length:  207480
+Compression Ratio  1.5063813379602853
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3501
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  4.1108717918396
+Compressed Length:  206416
+Compression Ratio  1.5141461902178126
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3601
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.746960401535034
+Compressed Length:  205212
+Compression Ratio  1.5230298423094166
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3701
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.449767589569092
+Compressed Length:  204652
+Compression Ratio  1.527197388737955
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3801
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.357978105545044
+Compressed Length:  203980
+Compression Ratio  1.532228649867634
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+Window Size:  3901
+Buffer Size:  200
+__________________________________________Compress__________________________________________
+
+Original length:  312544
+
+Compress Time taken:  3.3570759296417236
+Compressed Length:  202860
+Compression Ratio  1.5406881593216997
+
+
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
