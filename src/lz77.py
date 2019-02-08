@@ -115,7 +115,7 @@ def decompress(inp,lookahead_buffer_size , window_size):
     string_decode=get_tuples(inp,lookahead_buffer_size , window_size)
     final_string=""
     for tuples in string_decode:
-        #print(tuples)
+        print(tuples)
         if (tuples[0] == 0):
             final_string=final_string+chr(tuples[2])
         else:
@@ -132,37 +132,31 @@ def decompress(inp,lookahead_buffer_size , window_size):
 time_array=[]
 #window_size=[1,1,501,1001,1001,2001,2001,3001,3001,3001]
 #lookahead_buffer_size=10
-window_size=5
-for i in range (1,30,1):
-    print("Window Size: ",window_size )
-    print("Buffer Size: ",i )
-    print("_______Compress_______")
-    print()
-    start = time.time()
-    final = compress("../tests/ABRACADABRA.txt", i, window_size)
-    #print(final)
-    finish = time.time()
-    print()
-    print("Compress Time taken: " ,finish-start)
-    print("_______Decompress_______")
-    print()
-    start1= time.time()
-    tuples_list=get_tuples(final,i , window_size)
-    binary_string=get_binary(tuples_list,i , window_size)
-    print(decompress(final,i , window_size))
+window_size=500
+lookahead_buffer_size=500
 
-    final1=time.time()
-    decomp_time=final1 - start1
-    print("Decompress Total time: ",decomp_time )
-    time_array.append([window_size,i,decomp_time])
-    sep = ""
+print("Window Size: ",window_size )
+print("Buffer Size: ",lookahead_buffer_size )
+print("_______Compress_______")
+print()
+start = time.time()
+final = compress("../tests/ABRACADABRA.txt", lookahead_buffer_size, window_size)
+#print(final)
+finish = time.time()
+print()
+print("Compress Time taken: " ,finish-start)
+print("_______Decompress_______")
+print()
+start1= time.time()
+tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
+binary_string=get_binary(tuples_list,lookahead_buffer_size , window_size)
+print(decompress(final,lookahead_buffer_size , window_size))
 
-    print("- - - - - - - - - - NEW EXPERIMENT- - - - - - - - - -")
+final1=time.time()
+decomp_time=final1 - start1
+print("Decompress Total time: ",decomp_time )
+time_array.append([window_size,lookahead_buffer_size,decomp_time])
 
-
-with open('decomp.csv', 'w') as csv:
-    for row in time_array:
-        csv.write(sep.join(str(row)))
-        csv.write("\n")
+print("- - - - - - - - - - NEW EXPERIMENT- - - - - - - - - -")
 
 
