@@ -107,7 +107,7 @@ def get_string_encoded():
     return string_encoded
 
 
-
+"""
 lookahead_buffer_size=20
 window_size=20
 
@@ -124,5 +124,5 @@ print(finish-start)
 print("Time taken: " ,finish-start)
 f = open("binary.txt", "w")
 f.write(final) 
-
+"""
 

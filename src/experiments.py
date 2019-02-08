@@ -9,16 +9,18 @@ from lz77_decompress import decompress
 import sys
 import time
 
+
 ############Const buffer
 time_array_comp=[]
 time_array_decomp=[]
+ratio_array=[]
 #window_size=[1,1,501,1001,1001,2001,2001,3001,3001,3001]
 lookahead_buffer_size=250
 #window_size=4000
-path="memetics.txt"
+path="dog1.jpg"
 with open(path+'_compress_const_buffer.txt','w') as f:
 
-    for i in range (1,6000,500):
+    for i in range (1,5000,500):
         print("Window Size: ",i , file=f)
         print("Buffer Size: ",lookahead_buffer_size, file=f )
         print("__________________________________________Compress__________________________________________", file=f)
@@ -32,25 +34,27 @@ with open(path+'_compress_const_buffer.txt','w') as f:
         comp_time=finish-start
         print("Compress Time taken: " ,comp_time, file=f)
         print("Compressed Length: ",get_compressed_length(), file=f )
-        print("Compression Ratio " , get_ratio(), file=f )
+        ratio=get_ratio()
+        print("Compression Ratio " ,ratio , file=f )
+        ratio_array.append([i,lookahead_buffer_size,ratio])
         #print("__________________________________________Decompress__________________________________________", file=f)
-        print(file=f)
-        start1= time.time()
+        #print(file=f)
+        #start1= time.time()
         #tuples_list=get_tuples(final,lookahead_buffer_size , i)
-        string=decompress(final,lookahead_buffer_size , i)
+        #string=decompress(final,lookahead_buffer_size , i)
         #print(string,file=f)
-        final1=time.time()
-        decomp_time=final1 - start1
+        #final1=time.time()
+        #decomp_time=final1 - start1
         #print("Decompress Total time: ",decomp_time, file=f )
-        time_array_comp.append([i,lookahead_buffer_size,comp_time])
-        time_array_decomp.append([i,lookahead_buffer_size,decomp_time])
+        #time_array_comp.append([i,lookahead_buffer_size,comp_time])
+        #time_array_decomp.append([i,lookahead_buffer_size,decomp_time])
         
         print(file=f)
         
 
         print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
 
-
+"""
 sep = ""
 with open('comp_const_buff.csv', 'w') as csv:
     for row in time_array_comp:
@@ -63,7 +67,13 @@ with open('decomp_const_buff.csv', 'w') as csv:
         csv.write(sep.join(str(row)))
         csv.write("\n")
 
+"""
 
+sep = ""
+with open('comp_ratio_const_buff.csv', 'w') as csv:
+    for row in ratio_array:
+        csv.write(sep.join(str(row)))
+        csv.write("\n")
 
 
 print(2)
@@ -73,6 +83,7 @@ print(2)
 
 time_array_comp=[]
 time_array_decomp=[]
+ratio_array=[]
 #window_size=[1,1,501,1001,1001,2001,2001,3001,3001,3001]
 #lookahead_buffer_size=250
 window_size=5000
@@ -92,24 +103,26 @@ with open(path+'_compress_const_window.txt','w') as f:
         comp_time=finish-start
         print("Compress Time taken: " ,comp_time, file=f)
         print("Compressed Length: ",get_compressed_length(), file=f )
-        print("Compression Ratio " , get_ratio(), file=f )
+        ratio=get_ratio()
+        print("Compression Ratio " ,ratio , file=f )
+        ratio_array.append([window_size,i,ratio])
         #print("__________________________________________Decompress__________________________________________", file=f)
-        print(file=f)
-        start1= time.time()
+        #print(file=f)
+        #start1= time.time()
         #tuples_list=get_tuples(final,i , window_size)
-        string=decompress(final,i , window_size)
+        #string=decompress(final,i , window_size)
         #print(string,file=f)
-        final1=time.time()
-        decomp_time=final1 - start1
+        #final1=time.time()
+        #decomp_time=final1 - start1
         #print("Decompress Total time: ",decomp_time, file=f )
-        time_array_comp.append([window_size,i,comp_time])
-        time_array_decomp.append([window_size,i,decomp_time])
-        print(file=f)
+        #time_array_comp.append([window_size,i,comp_time])
+        #time_array_decomp.append([window_size,i,decomp_time])
+        #print(file=f)
         
 
         print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
 
-
+"""
 sep = ""
 with open('comp_const_wind.csv', 'w') as csv:
     for row in time_array_comp:
@@ -122,8 +135,16 @@ with open('decomp_const_wind.csv', 'w') as csv:
         csv.write(sep.join(str(row)))
         csv.write("\n")
 
+"""
+sep = ""
+with open('comp_ratio_const_wind.csv', 'w') as csv:
+    for row in ratio_array:
+        csv.write(sep.join(str(row)))
+        csv.write("\n")
 
 
+
+"""
 print(3)
 
 
@@ -233,5 +254,5 @@ with open(path+'_decompress.txt','w') as f:
 
         print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
 
-
+"""
 

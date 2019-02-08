@@ -37,7 +37,7 @@ def decompress(inp,lookahead_buffer_size , window_size):
             final_string=final_string+repeated_string+next_letter
     return final_string
             
-
+"""
 
 lookahead_buffer_size=20
 window_size=20
@@ -49,5 +49,5 @@ b=decompress(inp,lookahead_buffer_size , window_size)
 final=time.time()
 print("Total time: ", final - start)
 print(b)
-
+"""
 
