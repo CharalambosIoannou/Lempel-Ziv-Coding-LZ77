@@ -137,10 +137,10 @@ def decompress(inp,lookahead_buffer_size , window_size):
 
 time_array=[] #array to store the compression or the decompression time. This is adjusted accordingly to the experiment that i want to make
 #constant values for the window and bufer size. Two of the most ideal values
-window_size=5000 
-lookahead_buffer_size=250
+window_size=11 
+lookahead_buffer_size=11
 
-path="harry_potter_6.txt"
+path="ABRACADABRA.txt"
 
 
 print("Window Size: ",window_size )

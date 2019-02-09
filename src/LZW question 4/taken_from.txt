@@ -1,0 +1,1 @@
+https://rosettacode.org/wiki/LZW_compression#Python
