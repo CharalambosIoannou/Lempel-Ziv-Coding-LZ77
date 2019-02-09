@@ -3,8 +3,11 @@ import math
 import bitarray
 import sys
 
+"""
+    Compression Starts Here
+"""
 
-
+#Returns the binary string of the tuples created from compressing the input file
 def get_binary(string_encoded,lookahead_buffer_size , window_size):
     full_string=""
     d_bits=math.ceil(math.log(window_size+1,2))
@@ -19,10 +22,10 @@ def get_binary(string_encoded,lookahead_buffer_size , window_size):
         l="{0:b}".format(i[1]).zfill(l_bits)
         next_lett="{0:b}".format(i[2]).zfill(char_bits)
         full_string=full_string+d+l+next_lett
-    #print("full: ",full_string)
     return full_string
         
-
+#function that finds the longest possible match in the string starting from the current position
+#and comparing the string in the lookahead buffer with the string in the window
 def longest_match(inp, current_position,lookahead_buffer_size , window_size):
     positions_found=[]
     if (current_position + lookahead_buffer_size < len(inp) +1):
@@ -43,18 +46,16 @@ def longest_match(inp, current_position,lookahead_buffer_size , window_size):
             if (find_char != -1):
                 d=len(inp[start_index:current_position]) - find_char
                 l=len(string_to_check)
-                positions_found.append([d,l])
-                
+                positions_found.append([d,l])                
     if (len(positions_found) != 0 ):
         d=positions_found[-1][0]
         l=positions_found[-1][1]
-        #print(d)
-        #print(l)
+
         return d,l
     else:
         return -1,-1
 
-
+#function that compresses the string into tuples using lz77 method and then converting the tuples to binary
 def compress(file_name,lookahead_buffer_size,window_size):    
     try:
         input_file = open(file_name, 'rb')
@@ -89,8 +90,12 @@ def compress(file_name,lookahead_buffer_size,window_size):
     print("Compression Ratio " , length_original/len(final_string))
     return final_string
 
+"""
+    Compression Ends Here
+    Decompression Starts Here
+"""
 
-
+#function to convert binary back to tuples
 def get_tuples(inp,lookahead_buffer_size , window_size):
     string_decode=[]
     d_bits=math.ceil(math.log(window_size+1,2))
@@ -111,11 +116,12 @@ def get_tuples(inp,lookahead_buffer_size , window_size):
     return string_decode
 
 
+#function that gets the tuples and converts them to the actual string
 def decompress(inp,lookahead_buffer_size , window_size):
     string_decode=get_tuples(inp,lookahead_buffer_size , window_size)
     final_string=""
     for tuples in string_decode:
-        print(tuples)
+        #print(tuples)
         if (tuples[0] == 0):
             final_string=final_string+chr(tuples[2])
         else:
@@ -129,18 +135,20 @@ def decompress(inp,lookahead_buffer_size , window_size):
 
 
 
-time_array=[]
-#window_size=[1,1,501,1001,1001,2001,2001,3001,3001,3001]
-#lookahead_buffer_size=10
-window_size=500
-lookahead_buffer_size=500
+time_array=[] #array to store the compression or the decompression time. This is adjusted accordingly to the experiment that i want to make
+#constant values for the window and bufer size. Two of the most ideal values
+window_size=5000 
+lookahead_buffer_size=250
+
+path="harry_potter_6.txt"
+
 
 print("Window Size: ",window_size )
 print("Buffer Size: ",lookahead_buffer_size )
 print("_______Compress_______")
 print()
 start = time.time()
-final = compress("../tests/ABRACADABRA.txt", lookahead_buffer_size, window_size)
+final = compress("../tests/"+path, lookahead_buffer_size, window_size)
 #print(final)
 finish = time.time()
 print()
@@ -148,10 +156,13 @@ print("Compress Time taken: " ,finish-start)
 print("_______Decompress_______")
 print()
 start1= time.time()
-tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
-binary_string=get_binary(tuples_list,lookahead_buffer_size , window_size)
-print(decompress(final,lookahead_buffer_size , window_size))
-
+if (path[-3:] == "txt"):
+    string=decompress(final,lookahead_buffer_size , window_size)
+    print(string)
+else:            
+    tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
+    binary=get_binary(tuples_list,lookahead_buffer_size , window_size)
+    print(binary)
 final1=time.time()
 decomp_time=final1 - start1
 print("Decompress Total time: ",decomp_time )

@@ -2,6 +2,7 @@ import math
 import time
 import bitarray
 
+#function to convert binary back to tuples
 def get_tuples(inp,lookahead_buffer_size , window_size):
     string_decode=[]
     d_bits=math.ceil(math.log(window_size+1,2))
@@ -20,11 +21,11 @@ def get_tuples(inp,lookahead_buffer_size , window_size):
     #print(string_decode)
     return string_decode
 
-
+#function that gets the tuples and converts them to the actual string
 def decompress(inp,lookahead_buffer_size , window_size):
     string_decode=get_tuples(inp,lookahead_buffer_size , window_size)
     final_string=""
-    print("Length of tuples: ", len(string_decode))
+    #print("Length of tuples: ", len(string_decode))
     for tuples in string_decode:
         #print(tuples)
         if (tuples[0] == 0):
@@ -38,16 +39,7 @@ def decompress(inp,lookahead_buffer_size , window_size):
     return final_string
             
 """
-
-lookahead_buffer_size=20
-window_size=20
 inp="000000000001000001000000000001000010000000000001010010000110000101000011000100000101000100001110010000100000"
-start= time.time()
-#a=get_tuples(inp,lookahead_buffer_size , window_size)   
-b=decompress(inp,lookahead_buffer_size , window_size)
-
-final=time.time()
-print("Total time: ", final - start)
+b=decompress(inp,20 , 20)
 print(b)
 """
-
