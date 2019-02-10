@@ -57,15 +57,22 @@ def longest_match(inp, current_position,lookahead_buffer_size , window_size):
 
 #function that compresses the string into tuples using lz77 method and then converting the tuples to binary
 def compress(file_name,lookahead_buffer_size,window_size):    
+    global length_original
+    global string_encoded
+    global comp_length
     try:
         input_file = open(file_name, 'rb')
         inp = input_file.read()
         inp_to_binary=bitarray.bitarray(endian='big')
         inp_to_binary.frombytes(inp)
+        length_original=len(inp_to_binary)
+        print("Original length: " , length_original)
     except IOError:
         print('Could not open file')
-    length_original=len(inp_to_binary)
-    print("Original length: " , length_original)
+        return
+    except UnboundLocalError:
+        print('Could not open file')
+        return
     string_encoded=[]
     position = 0
     aleady_found=[]
@@ -84,10 +91,13 @@ def compress(file_name,lookahead_buffer_size,window_size):
             #print("(",d,",",l,",",next_letter,")")
             string_encoded.append([d,l,next_letter])
             position=position+l+1
-    #print(string_encoded)
+    #print(string_encoded)    
     final_string=get_binary(string_encoded,lookahead_buffer_size, window_size)
-    print("Compressed Length: ", len(final_string))
-    print("Compression Ratio " , length_original/len(final_string))
+    comp_length=len(final_string)
+    global ratio
+    ratio = length_original/comp_length
+    print("Compressed Length: ", comp_length)
+    print("Compression Ratio " , ratio)
     return final_string
 
 """
@@ -131,43 +141,65 @@ def decompress(inp,lookahead_buffer_size , window_size):
             next_letter=chr(tuples[2])
             final_string=final_string+repeated_string+next_letter
     return final_string
+
             
+#get functions that are used in the experiments.py file to pass on variable values
+def get_ratio():
+    return ratio
+def get_original_length():
+    return length_original
+def get_compressed_length():
+    return comp_length
+def get_string_encoded():
+    return string_encoded
 
 
+def main(path,window_size,lookahead_buffer_size):
+    time_array=[] #array to store the compression or the decompression time. This is adjusted accordingly to the experiment that i want to make
+    #constant values for the window and bufer size. Two of the most ideal values
 
-time_array=[] #array to store the compression or the decompression time. This is adjusted accordingly to the experiment that i want to make
-#constant values for the window and bufer size. Two of the most ideal values
-window_size=11 
-lookahead_buffer_size=11
+    print("Window Size: ",window_size )
+    print("Buffer Size: ",lookahead_buffer_size )
+    print("_______Compress_______")
+    print()
+    start = time.time()
+    final = compress(path, lookahead_buffer_size, window_size)
+    if (final is None):
+        print("Please enter a valid file name")
+    else:
+        #print(final)
+        finish = time.time()
+        print()
+        print("Compress Time taken: " ,finish-start)
+        print("_______Decompress_______")
+        print()
+        start1= time.time()
+        if (path[-3:] == "txt"):
+            string=decompress(final,lookahead_buffer_size , window_size)
+            print(string)
+            tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
+            binary=get_binary(tuples_list,lookahead_buffer_size , window_size)
+        else:            
+            tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
+            binary=get_binary(tuples_list,lookahead_buffer_size , window_size)
+            #print(binary)
+        final1=time.time()
+        decomp_time=final1 - start1
+        print("Decompress Total time: ",decomp_time )
+        if (final == binary):
+            print ("Compression and Decompression MATCH")
+        else:
+            print ("Compression and Decompression DO NOT MATCH")
+        time_array.append([window_size,lookahead_buffer_size,decomp_time])
 
-path="ABRACADABRA.txt"
+        print("- - - - - - - - - - NEW EXPERIMENT- - - - - - - - - -")
 
 
-print("Window Size: ",window_size )
-print("Buffer Size: ",lookahead_buffer_size )
-print("_______Compress_______")
-print()
-start = time.time()
-final = compress("../tests/"+path, lookahead_buffer_size, window_size)
-#print(final)
-finish = time.time()
-print()
-print("Compress Time taken: " ,finish-start)
-print("_______Decompress_______")
-print()
-start1= time.time()
-if (path[-3:] == "txt"):
-    string=decompress(final,lookahead_buffer_size , window_size)
-    print(string)
-else:            
-    tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
-    binary=get_binary(tuples_list,lookahead_buffer_size , window_size)
-    print(binary)
-final1=time.time()
-decomp_time=final1 - start1
-print("Decompress Total time: ",decomp_time )
-time_array.append([window_size,lookahead_buffer_size,decomp_time])
+#Uncomment last line to run program
+"""
+Parameter 1) Path of desired file to be compressed/decompressed
+Parameter 2) Window Size
+Parameter 3) Lookahead Buffer Size
+"""
 
-print("- - - - - - - - - - NEW EXPERIMENT- - - - - - - - - -")
-
-
+main("../tests/abracadabra.txt",2,0) 

@@ -1,30 +1,37 @@
-from lz77_compress import compress
-from lz77_compress import get_original_length
-from lz77_compress import get_compressed_length
-from lz77_compress import get_string_encoded
-from lz77_compress import get_binary
-from lz77_compress import get_ratio
-from lz77_decompress import get_tuples
-from lz77_decompress import decompress
+from lz77 import compress
+from lz77 import get_original_length
+from lz77 import get_compressed_length
+from lz77 import get_string_encoded
+from lz77 import get_binary
+from lz77 import get_ratio
+from lz77 import get_tuples
+from lz77 import decompress
 import sys
 import time
 
 
-path="dog1.jpg"
+path="../tests/abracadabra.txt"
+
+window_size=5000 #constant window size used in experiment 1
+lookahead_buffer_size=300 #constant buffer size used in experiment 2,3,4
 
 
-##################       Constant window size           ##################       
+
+
+
+"""
+    Experiment: 1 - Constant window size  
+"""   
 
 time_array=[]
-window_size=5000
 with open(path+'_compress_const_window.txt','w') as f:
     for i in range (1,300,10):
         print("Window Size: ",window_size , file=f)
         print("Buffer Size: ",i, file=f )
-        print("__________________________________________Compress__________________________________________", file=f)
+        print("____________________________________________________________________________________Compress____________________________________________________________________________________", file=f)
         print(file=f)
         start = time.time()
-        final = compress("../tests/"+path, i, window_size)
+        final = compress(path, i, window_size)
         print("Original length: " , get_original_length(), file=f)
         finish = time.time()
         print(file=f)
@@ -32,7 +39,7 @@ with open(path+'_compress_const_window.txt','w') as f:
         print("Compress Time taken: " ,comp_time, file=f)
         print("Compressed Length: ",get_compressed_length(), file=f )
         print("Compression Ratio " , get_ratio(), file=f )
-        print("__________________________________________Decompress__________________________________________", file=f)
+        print("____________________________________________________________________________________Decompress____________________________________________________________________________________", file=f)
         print(file=f)
         start1= time.time()
         tuples_list=get_tuples(final,i , window_size)
@@ -42,7 +49,7 @@ with open(path+'_compress_const_window.txt','w') as f:
         print("Decompress Total time: ",decomp_time, file=f )
         time_array.append([window_size,i,decomp_time])
         print(file=f)
-        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
+        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
 
 #output decompression time to an excel spreadsheet in order to get the values easier and produce graphs
 """
@@ -54,27 +61,29 @@ with open(path+'_decomp_const_window.csv', 'w') as csv:
 
 """
 
+####################################################################
 
-##################       Constant buffer size           ##################  
+"""
+    Experiment: 2 - Constant buffer size  
+"""
+     
 
 time_array=[]
-lookahead_buffer_size=300
-path="dog1.jpg"
 with open(path+'_compress_const_buffer.txt','w') as f:
     for i in range (1,5000,200):
         print("Window Size: ",i , file=f)
         print("Buffer Size: ",lookahead_buffer_size, file=f )
-        print("__________________________________________Compress__________________________________________", file=f)
+        print("____________________________________________________________________________________Compress____________________________________________________________________________________", file=f)
         print(file=f)
         start = time.time()
-        final = compress("../tests/"+path, lookahead_buffer_size, i)
+        final = compress(path, lookahead_buffer_size, i)
         print("Original length: " , get_original_length(), file=f)
         finish = time.time()
         print(file=f)
         print("Compress Time taken: " ,finish-start, file=f)
         print("Compressed Length: ",get_compressed_length(), file=f )
         print("Compression Ratio " , get_ratio(), file=f )
-        print("__________________________________________Decompress__________________________________________", file=f)
+        print("____________________________________________________________________________________Decompress____________________________________________________________________________________", file=f)
         print(file=f)
         start1= time.time()
         tuples_list=get_tuples(final,lookahead_buffer_size , i)
@@ -84,7 +93,7 @@ with open(path+'_compress_const_buffer.txt','w') as f:
         print("Decompress Total time: ",decomp_time, file=f )
         time_array.append([i,lookahead_buffer_size,decomp_time])
         print(file=f)
-        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
+        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
 
 """
 sep = ""
@@ -93,23 +102,26 @@ with open(path+'_decomp_const_buffer.csv', 'w') as csv:
         csv.write(sep.join(str(row)))
         csv.write("\n")
 """
+####################################################################
 
-##################       Compress file           ##################  
+
+"""
+    Experiment: 3 - Compress File 
+"""
+     
 
 time_array=[]
 lookahead_buffer_size=300
-
 with open(path+'_compress.txt','w') as f:
-
     for i in range (1,5000,200):
         print("Window Size: ",i , file=f)
         print("Buffer Size: ",lookahead_buffer_size, file=f )
-        print("__________________________________________Compress__________________________________________", file=f)
+        print("____________________________________________________________________________________Compress____________________________________________________________________________________", file=f)
         print(file=f)
         start = time.time()
-        final = compress("../tests/"+path, lookahead_buffer_size, i)
+        final = compress(path, lookahead_buffer_size, i)
         print("Original length: " , get_original_length(), file=f)
-        print(final, file=f)
+        print("Compressed Bits: " ,final, file=f)
         finish = time.time()
         print(file=f)
         comp_time=finish-start
@@ -118,43 +130,53 @@ with open(path+'_compress.txt','w') as f:
         print("Compression Ratio " , get_ratio(), file=f )
         time_array.append([i,lookahead_buffer_size,comp_time])
         print(file=f)
-        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
+        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
 
 
-##################       Decompress file           ##################  
+"""
+    Experiment: 4 - Decompress File 
+"""
 
 time_array=[]
-lookahead_buffer_size=300
 with open(path+'_decompress.txt','w') as f:
     for i in range (1,5000,200):
         print("Window Size: ",i , file=f)
         print("Buffer Size: ",lookahead_buffer_size, file=f )
-        print("__________________________________________Compress__________________________________________", file=f)
+        print("____________________________________________________________________________________Compress____________________________________________________________________________________", file=f)
         print(file=f)
         start = time.time()
-        final = compress("../tests/"+path, lookahead_buffer_size, i)
+        final = compress(path, lookahead_buffer_size, i)
         print("Original length: " , get_original_length(), file=f)
-        print(final, file=f)
+        print("Compressed Bits: " ,final, file=f)
         finish = time.time()
         print(file=f)
         print("Compress Time taken: " ,finish-start, file=f)
         print("Compressed Length: ",get_compressed_length(), file=f )
         print("Compression Ratio " , get_ratio(), file=f )
-        print("__________________________________________Decompress__________________________________________", file=f)
+        print("____________________________________________________________________________________Decompress____________________________________________________________________________________", file=f)
         print(file=f)
         start1= time.time()
         if (path[-3:] == "txt"):
             string=decompress(final,lookahead_buffer_size , i)
-            print(string,file=f)
+            print("Decompressed String: " , string,file=f)
+            tuples_list=get_tuples(final,lookahead_buffer_size , i)
+            binary=get_binary(tuples_list,lookahead_buffer_size , i)
+            
         else:            
             tuples_list=get_tuples(final,lookahead_buffer_size , i)
             binary=get_binary(tuples_list,lookahead_buffer_size , i)
-            print(binary,file=f)
+            print("Decompressed Bits: ",binary,file=f)
         final1=time.time()
         decomp_time=final1 - start1
+        print(file=f)
         print("Decompress Total time: ",decomp_time, file=f )
+        print(file=f)
+        if (final == binary):
+            print ("Compression and Decompression MATCH",file=f)
+        else:
+            print ("Compression and Decompression DO NOT MATCH",file=f)
         time_array.append([i,lookahead_buffer_size,decomp_time])
         print(file=f)      
-        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT- - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
+        print("- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - NEW EXPERIMENT - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -", file=f)
 
 
