@@ -65,6 +65,7 @@ def compress(file_name,lookahead_buffer_size,window_size):
         inp = input_file.read()
         inp_to_binary=bitarray.bitarray(endian='big')
         inp_to_binary.frombytes(inp)
+        #print("inp: ",inp_to_binary)
         length_original=len(inp_to_binary)
         print("Original length: " , length_original)
     except IOError:
@@ -160,29 +161,30 @@ def main(path,window_size,lookahead_buffer_size):
 
     print("Window Size: ",window_size )
     print("Buffer Size: ",lookahead_buffer_size )
-    print("_______Compress_______")
+    print("_____________________________Compress_____________________________")
     print()
     start = time.time()
     final = compress(path, lookahead_buffer_size, window_size)
     if (final is None):
         print("Please enter a valid file name")
+        return 
     else:
-        #print(final)
+        print("Compressed Bits: " ,final)
         finish = time.time()
         print()
         print("Compress Time taken: " ,finish-start)
-        print("_______Decompress_______")
+        print("_____________________________Decompress_____________________________")
         print()
         start1= time.time()
         if (path[-3:] == "txt"):
             string=decompress(final,lookahead_buffer_size , window_size)
-            print(string)
+            print("Decompressed String: ",string)
             tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
             binary=get_binary(tuples_list,lookahead_buffer_size , window_size)
         else:            
             tuples_list=get_tuples(final,lookahead_buffer_size , window_size)
             binary=get_binary(tuples_list,lookahead_buffer_size , window_size)
-            #print(binary)
+            print("Decompressed Bits: ",binary)
         final1=time.time()
         decomp_time=final1 - start1
         print("Decompress Total time: ",decomp_time )
@@ -192,14 +194,7 @@ def main(path,window_size,lookahead_buffer_size):
             print ("Compression and Decompression DO NOT MATCH")
         time_array.append([window_size,lookahead_buffer_size,decomp_time])
 
-        print("- - - - - - - - - - NEW EXPERIMENT- - - - - - - - - -")
+        print("- - - - - - - - - - - - - NEW EXPERIMENT - - - - - - - - - - - - -")
+    return binary
 
 
-#Uncomment last line to run program
-"""
-Parameter 1) Path of desired file to be compressed/decompressed
-Parameter 2) Window Size
-Parameter 3) Lookahead Buffer Size
-"""
-
-main("../tests/abracadabra.txt",2,0) 
