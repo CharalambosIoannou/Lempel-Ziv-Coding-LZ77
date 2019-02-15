@@ -76,11 +76,11 @@ def compress(file_name,lookahead_buffer_size,window_size):
         return
     string_encoded=[]
     position = 0
-    aleady_found=[]
+    #aleady_found=[]
     while position < len(inp):    
         d,l=longest_match(inp,position,lookahead_buffer_size,window_size)
         if d == -1 and l== -1:
-            aleady_found.append(inp[position])
+            #aleady_found.append(inp[position])
             #print("( 0 , 0 ,",inp[position],")")
             string_encoded.append([0,0,inp[position]])
             position=position+1
