@@ -10,21 +10,21 @@ import sys
 import time
 
 
-path="../tests/22.txt"
+path="abracadabra.txt"
 
 window_size=5000 #constant window size used in experiment 1
 lookahead_buffer_size=300 #constant buffer size used in experiment 2,3,4
 
 
 
-txt_files_name=path[9:]
+
 
 """
     Experiment: 1 - Constant window size  
 """   
 
 time_array=[]
-with open(txt_files_name+'_compress_const_window.txt','w') as f:
+with open(path+'_compress_const_window.txt','w') as f:
     for i in range (1,300,10):
         print("Window Size: ",window_size , file=f)
         print("Buffer Size: ",i, file=f )
@@ -69,7 +69,7 @@ with open(path+'_decomp_const_window.csv', 'w') as csv:
      
 
 time_array=[]
-with open(txt_files_name+'_compress_const_buffer.txt','w') as f:
+with open(path+'_compress_const_buffer.txt','w') as f:
     for i in range (1,5000,200):
         print("Window Size: ",i , file=f)
         print("Buffer Size: ",lookahead_buffer_size, file=f )
@@ -112,7 +112,7 @@ with open(path+'_decomp_const_buffer.csv', 'w') as csv:
 
 time_array=[]
 lookahead_buffer_size=300
-with open(txt_files_name+'_compress.txt','w') as f:
+with open(path+'_compress.txt','w') as f:
     for i in range (1,5000,200):
         print("Window Size: ",i , file=f)
         print("Buffer Size: ",lookahead_buffer_size, file=f )
@@ -138,7 +138,7 @@ with open(txt_files_name+'_compress.txt','w') as f:
 """
 
 time_array=[]
-with open(txt_files_name+'_decompress.txt','w') as f:
+with open(path+'_decompress.txt','w') as f:
     for i in range (1,5000,200):
         print("Window Size: ",i , file=f)
         print("Buffer Size: ",lookahead_buffer_size, file=f )
